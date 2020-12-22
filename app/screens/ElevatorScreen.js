@@ -35,7 +35,7 @@ function ElevatorScreen(props) {
         <Image source={ logo }style={styles.logo}/>
         <View>
           <Text style={styles.text}>Id : {id}</Text>
-          <Text style={styles.text}>Status : {status}</Text>
+          <Text style={styles.textGreen}>Status : {status}</Text>
           <Text style={styles.text}>Serial # : {serialNumber}</Text>
           <TouchableOpacity style={styles.appButtonContainer}
             onPress={() => navigation.navigate ('ElevatorListScreen')}>
@@ -49,9 +49,9 @@ function ElevatorScreen(props) {
     <View style={styles.container}>
     <Image source={ logo }style={styles.logo}/>
     <View>
-      <Text style={styles.text}>ID: {id}</Text>
-      <Text style={styles.text}>STATUS: {status}</Text>
-      <Text style={styles.text}>SN: {serialNumber}</Text>
+      <Text style={styles.text}>Id: {id}</Text>
+      <Text style={styles.textRed}>Status: {status}</Text>
+      <Text style={styles.text}>Serial # : {serialNumber}</Text>
         <TouchableOpacity style={styles.appButtonContainer}
             onPress={ async () => { 
               await changeStatus();
@@ -79,6 +79,18 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#101010',
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: 'bold'
+  },
+  textGreen: {
+    color: 'green',
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: 'bold'
+  },
+  textRed: {
+    color: 'red',
     textAlign: 'center',
     fontSize: 24,
     fontWeight: 'bold'
