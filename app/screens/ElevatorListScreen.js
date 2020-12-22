@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native'
+import { StyleSheet, View, SafeAreaView, Text, TouchableOpacity, FlatList } from 'react-native'
 
 export default class ElevatorListScreen extends Component {
   constructor(props){
@@ -36,14 +36,14 @@ export default class ElevatorListScreen extends Component {
     }
     if (item.status != "Active"){
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <TouchableOpacity style={styles.loginBtn}
           onPress={()=> this.props.navigation.navigate('ElevatorScreen', {item: info })}>
           <Text style={styles.text}> ID:{item.id} </Text>
           <Text style={styles.text}> Status:{item.status} </Text>
           <Text style={styles.text}> SerialNumber:{item.serial_number} </Text>
         </TouchableOpacity>
-      </View>  
+      </SafeAreaView>  
     )};
   }
   
@@ -51,24 +51,29 @@ export default class ElevatorListScreen extends Component {
     this.getInfo()
     let {dataSource, isloading} = this.state
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Text style={styles.textTitle}>Non-Active Elevators</Text>
         <FlatList
           data={dataSource}
           renderItem={this._renderItem}
           keyExtractor={(item, index) => index.toString()}
         />
-      </View>
+      </SafeAreaView>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ebebeb'
+    backgroundColor: '#ebebeb',
+    marginBottom: 40,
+    textAlignVertical: "center",
+    alignItems:"center",
+    textAlign: 'center',
   },
   text: {
     color: '#101010',
+    textAlignVertical: "center",
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
@@ -92,7 +97,5 @@ const styles = StyleSheet.create({
     alignItems:"center",
     justifyContent:"center",
     marginTop:10,
-    marginLeft:50,
-    marginRight:50,
   }
 })
