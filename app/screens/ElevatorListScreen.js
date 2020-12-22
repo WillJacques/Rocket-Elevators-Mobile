@@ -39,9 +39,9 @@ export default class ElevatorListScreen extends Component {
       <SafeAreaView style={styles.container}>
         <TouchableOpacity style={styles.loginBtn}
           onPress={()=> this.props.navigation.navigate('ElevatorScreen', {item: info })}>
-          <Text style={styles.text}> ID:{item.id} </Text>
-          <Text style={styles.text}> Status:{item.status} </Text>
-          <Text style={styles.text}> SerialNumber:{item.serial_number} </Text>
+          <Text style={styles.text}> # {item.id} </Text>
+          <Text style={styles.text}> Status : {item.status} </Text>
+          <Text style={styles.text}> Serial # : {item.serial_number} </Text>
         </TouchableOpacity>
       </SafeAreaView>  
     )};

@@ -30,10 +30,8 @@ function LoginScreen(props) {
   }
     return (
       <ImageBackground source={ bgImage }style={styles.backgroundContainer}>
-         <View style={styles.logo}>
-          <Image source={ logo }style={styles.logo}/>
-        </View>
-        <View style={{top: 340}}>
+         
+        <View style={{top: 10}}>
           <TextInput
             style={styles.input}
             placeholder={'Email'}
@@ -48,6 +46,9 @@ function LoginScreen(props) {
           onPress={checkData}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
+        <View style={styles.logo}>
+          <Image source={ logo }style={styles.logo}/>
+        </View>
       </ImageBackground>
 
     );
@@ -78,9 +79,9 @@ const styles = StyleSheet.create({
     height:50,
     alignItems:"center",
     justifyContent:"center",
-    marginTop:40,
+    marginTop:20,
     marginBottom:10,
-    top: 320,
+    top: 0,
   },
   logo: {
     width:281,
