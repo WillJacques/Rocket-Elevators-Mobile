@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity, Dimensions, Image } from 'react-native'
 import logo from '../assets/R2.png'
 
-function Detail(props) {
+function ElevatorScreen(props) {
   const { route } = props
   const { navigation } = props
   const { item } = route.params
@@ -38,7 +38,7 @@ function Detail(props) {
           <Text style={styles.text}>Status : {status}</Text>
           <Text style={styles.text}>Serial # : {serialNumber}</Text>
           <TouchableOpacity style={styles.appButtonContainer}
-            onPress={() => navigation.navigate ('Home')}>
+            onPress={() => navigation.navigate ('ElevatorListScreen')}>
             <Text style={styles.appButtonText}>Back to list</Text>
           </TouchableOpacity>
         </View>
@@ -61,7 +61,7 @@ function Detail(props) {
                 status: Elevator.status,
                 serialNumber: Elevator.serial_number,
               }
-              navigation.navigate('Detail', {item:newInfo})
+              navigation.navigate('ElevatorScreen', {item:newInfo})
             } }>
           <Text style={styles.appButtonText}>Change status to Active</Text>
         </TouchableOpacity>
@@ -103,6 +103,6 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Detail
+export default ElevatorScreen
 
-// src/screens/Detail.js
+// src/screens/ElevatorScreen.js

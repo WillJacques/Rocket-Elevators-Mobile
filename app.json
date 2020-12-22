@@ -28,6 +28,7 @@
     "web": {
       "favicon": "./app/assets/favicon.png"
     },
-    "description": "Codeboxx final project week 14 odyssey program"
+    "description": "Codeboxx final project week 14 odyssey program",
+    "githubUrl": "https://github.com/WillJacques/Rocket-Elevators-Mobile"
   }
 }

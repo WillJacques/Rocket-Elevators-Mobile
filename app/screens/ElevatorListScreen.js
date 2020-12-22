@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native'
 
-export default class Home extends Component {
+export default class ElevatorListScreen extends Component {
   constructor(props){
     super(props)
     this.state = {
       isLoading: true,
       dataSource: []
     }
+  }
+
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
   }
   
   getInfo() {
@@ -31,7 +38,7 @@ export default class Home extends Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity style={styles.loginBtn}
-          onPress={()=> this.props.navigation.navigate('Detail', {item: info })}>
+          onPress={()=> this.props.navigation.navigate('ElevatorScreen', {item: info })}>
           <Text style={styles.text}> ID:{item.id} </Text>
           <Text style={styles.text}> Status:{item.status} </Text>
           <Text style={styles.text}> SerialNumber:{item.serial_number} </Text>
@@ -87,9 +94,5 @@ const styles = StyleSheet.create({
     marginTop:10,
     marginLeft:50,
     marginRight:50,
-  },
-  buttonText: {
-    fontSize: 20,
-    color: '#fff'
   }
 })

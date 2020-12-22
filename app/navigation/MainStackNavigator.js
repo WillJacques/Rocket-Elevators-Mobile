@@ -3,46 +3,46 @@ import { View, Text, Button, Image, StyleSheet,TouchableOpacity } from 'react-na
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import Home from '../screens/Home'
+import ElevatorListScreen from '../screens/ElevatorListScreen'
 
 const Stack = createStackNavigator()
 
-import Detail from '../screens/Detail'
-import Login from '../screens/Login'
+import ElevatorScreen from '../screens/ElevatorScreen'
+import LoginScreen from '../screens/LoginScreen'
 
 function MainStackNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='Login'
+        initialRouteName='LoginScreen'
         screenOptions={{
           headerTitleAlign: 'center',
-          gestureEnabled: true
+          gestureEnabled: true,
         }}>
          <Stack.Screen
-          name='Login'
-          component={Login}
-          options={{title: 'Login Screen' }}
+          name='LoginScreen'
+          component={LoginScreen}
+          options={{title: 'Login' }}
         />
         <Stack.Screen
-          name='Home'
-          component={Home}
+          name='ElevatorListScreen'
+          component={ElevatorListScreen}
           options={
             ({navigation}) => (
             {  headerRight: () => (
-              <TouchableOpacity style={styles.buttonStyleRight} onPress={() => navigation.navigate ('Login')}>
+              <TouchableOpacity style={styles.buttonStyleRight} onPress={() => navigation.navigate ('LoginScreen')}>
                 <Text style={styles.text}>Logout</Text>
               </TouchableOpacity>
             ),  headerLeft: () => (
-              <TouchableOpacity style={styles.buttonStyleRight} onPress={() => navigation.navigate ('Login')}>
+              <TouchableOpacity style={styles.buttonStyleRight} onPress={() => navigation.navigate ('LoginScreen')}>
                 <Text style={styles.text}>Back</Text>
               </TouchableOpacity>
-            ), }
+            ), title: 'Elevator List' }
           )}
         />
          <Stack.Screen
-          name='Detail'
-          component={Detail}
+          name='ElevatorScreen'
+          component={ElevatorScreen}
           options={
             ({navigation}) => (
             {  headerRight: () => (
@@ -50,10 +50,10 @@ function MainStackNavigator() {
                 <Text style={styles.text}>Logout</Text>
               </TouchableOpacity>
             ),  headerLeft: () => (
-              <TouchableOpacity style={styles.buttonStyleRight} onPress={() => navigation.navigate ('Home')}>
+              <TouchableOpacity style={styles.buttonStyleRight} onPress={() => navigation.navigate ('ElevatorListScreen')}>
                 <Text style={styles.text}>Back</Text>
               </TouchableOpacity>
-            ), }
+            ), title: 'Elevator' }
           )}
         />
       </Stack.Navigator>

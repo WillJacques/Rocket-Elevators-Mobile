@@ -7,7 +7,7 @@ import logo from '../assets/R2.png';
 
 const { width: WIDTH } = Dimensions.get('window') 
 
-function Login(props) {
+function LoginScreen(props) {
   const [text, setText] = useState('');
   const { navigation } = props
 
@@ -21,7 +21,7 @@ function Login(props) {
   async function checkData() {
     var getEmployee = await getData(text)
     if (getEmployee.length == 1) {
-      navigation.navigate("Home")
+      navigation.navigate("ElevatorListScreen")
     } else {
       Alert.alert("Oups! Your email didn't match !", "Please enter a valid employee email...",[
         {text: "OK, Let's try again !"}
@@ -62,13 +62,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  logoText: {
-    color: '#A3060E',
-    fontSize: 50,
-    fontWeight: '500',
-    textAlign: 'center',
-    marginTop: 10,
-  },
   input: {
     width: WIDTH -100,
     height: 45,
@@ -78,7 +71,7 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.7)',
     marginHorizontal: 25
   },
-   loginBtn:{
+  loginBtn:{
     width: WIDTH -250,
     backgroundColor:"red",
     borderRadius:25,
@@ -97,4 +90,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Login
+export default LoginScreen
