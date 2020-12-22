@@ -49,8 +49,8 @@ function ElevatorScreen(props) {
     <View style={styles.container}>
     <Image source={ logo }style={styles.logo}/>
     <View>
-      <Text style={styles.text}>Id: {id}</Text>
-      <Text style={styles.textRed}>Status: {status}</Text>
+      <Text style={styles.text}>Id : {id}</Text>
+      <Text style={styles.textRed}>Status : {status}</Text>
       <Text style={styles.text}>Serial # : {serialNumber}</Text>
         <TouchableOpacity style={styles.appButtonContainer}
             onPress={ async () => { 
@@ -58,7 +58,7 @@ function ElevatorScreen(props) {
               const Elevator = await getInfo();
               const newInfo = {
                 id: Elevator.id,
-                status: Elevator.status,
+                status: "Active",
                 serialNumber: Elevator.serial_number,
               }
               navigation.navigate('ElevatorScreen', {item:newInfo})
