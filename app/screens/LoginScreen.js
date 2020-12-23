@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, ImageBackground, Image, Dimensions, TextInput, 
 import bgImage from '../assets/rocketvertical.jpg';
 import logo from '../assets/R2.png';
 
-
+// create a width constant equal to the user's windows screen width
 const { width: WIDTH } = Dimensions.get('window') 
 
 function LoginScreen(props) {
@@ -18,6 +18,7 @@ function LoginScreen(props) {
     const data = await response.json();
     return data
   };
+  // if api return something, it means the email exist in the database so it navigates to elevatorList
   async function checkData() {
     var getEmployee = await getData(text)
     if (getEmployee.length == 1) {
@@ -29,6 +30,7 @@ function LoginScreen(props) {
     }
   }
     return (
+      // puts the background image, after the email input, then the login button and the logo
       <ImageBackground source={ bgImage }style={styles.backgroundContainer}>
          
         <View style={{top: 10}}>

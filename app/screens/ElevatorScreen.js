@@ -7,7 +7,8 @@ function ElevatorScreen(props) {
   const { navigation } = props
   const { item } = route.params
   const { id, status, serialNumber } = item
-  
+
+  // PUT someData to API to an elevator ID no Return for this function
   async function changeStatus() {
     const url = `https://wjrocketapi.azurewebsites.net/api/Elevator/${id}`
     const someData = {
@@ -23,12 +24,19 @@ function ElevatorScreen(props) {
       fetch(url, putMethod)
   }
 
+  // create a sleep function since I'm still not able to make the .then after my function changeStatus()... will look at it at the end
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+
+  // Get all elevator infos from a specific Id
   async function getInfo() {
     var url = `https://wjrocketapi.azurewebsites.net/api/Elevator/Spec/${id}`;
     const response = await fetch(url);
     const data = await response.json();
     return data
   }
+  // on page reload the status should be active and show it in green
   if (status == "Active"){
     return (
       <View style={styles.container}>
@@ -38,13 +46,15 @@ function ElevatorScreen(props) {
           <Text style={styles.textGreen}>Status : {status}</Text>
           <Text style={styles.text}>Serial # : {serialNumber}</Text>
           <TouchableOpacity style={styles.appButtonContainer}
-            onPress={() => navigation.navigate ('ElevatorListScreen')}>
+          // Return to elevator list after click on button "Back to list"
+            onPress={() => navigation.navigate ('ElevatorListScreen')}> 
             <Text style={styles.appButtonText}>Back to list</Text>
           </TouchableOpacity>
         </View>
       </View>
     )
   }else {
+  // on page load the status should be inactive and show it in red
   return (
     <View style={styles.container}>
     <Image source={ logo }style={styles.logo}/>
@@ -55,12 +65,14 @@ function ElevatorScreen(props) {
         <TouchableOpacity style={styles.appButtonContainer}
             onPress={ async () => { 
               await changeStatus();
+              await sleep(500)
               const Elevator = await getInfo();
               const newInfo = {
                 id: Elevator.id,
-                status: "Active",
+                status: Elevator.status,
                 serialNumber: Elevator.serial_number,
               }
+              // Refresh the page after button click with the infos needed to load it
               navigation.navigate('ElevatorScreen', {item:newInfo})
             } }>
           <Text style={styles.appButtonText}>Change status to Active</Text>

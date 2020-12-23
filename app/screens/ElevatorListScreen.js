@@ -10,13 +10,15 @@ export default class ElevatorListScreen extends Component {
     }
   }
 
+  // fix Warning: Can't perform a React state update on an unmounted component.... it removes a error line...but not sur eif it's the best way
   componentWillUnmount() {
-    // fix Warning: Can't perform a React state update on an unmounted component
+    
     this.setState = (state,callback)=>{
         return;
     };
   }
-  
+
+  // API call that return all infos from all elevators
   getInfo() {
     fetch `https://wjrocketapi.azurewebsites.net/api/Elevator/Active`
     .then((response) => response.json())
@@ -27,7 +29,8 @@ export default class ElevatorListScreen extends Component {
       })
     })
   }
-
+  
+  // Render each elevator infos for the list
   _renderItem = ({item, index}) => {
     const info = {
       id: item.id,
@@ -46,7 +49,7 @@ export default class ElevatorListScreen extends Component {
       </SafeAreaView>  
     )};
   }
-  
+  // put the Non-Active elevator ribbon and list render all elevators in a list.
   render() {
     this.getInfo()
     let {dataSource, isloading} = this.state

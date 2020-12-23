@@ -12,6 +12,7 @@ import LoginScreen from '../screens/LoginScreen'
 
 function MainStackNavigator() {
   return (
+    // Welcome screen is the LoginScreen
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName='LoginScreen'
@@ -27,6 +28,7 @@ function MainStackNavigator() {
         <Stack.Screen
           name='ElevatorListScreen'
           component={ElevatorListScreen}
+          //headerRight and headerLeft are placeholder to put my buttons on each screen
           options={
             ({navigation}) => (
             {  headerRight: () => (
